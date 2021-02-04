@@ -1,3 +1,4 @@
+import { ServerService } from './services/server.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
+  public serverData : Array<any> = [];
   public appPages = [
     {
-      title: 'Inbox',
-      url: '/folder/Inbox',
-      icon: 'mail',
+      title: 'Home',
+      url: '/home',
+      icon: 'server',
     },
     {
+      title: 'Chat',
+      url: '/chat',
+      icon: 'chatbubble',
+    },
+/*     {
       title: 'Outbox',
       url: '/folder/Outbox',
       icon: 'paper-plane',
@@ -37,13 +44,17 @@ export class AppComponent implements OnInit {
       title: 'Spam',
       url: '/folder/Spam',
       icon: 'warning',
-    },
+    }, */
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  constructor() {}
+  constructor(private server: ServerService) {}
 
   ngOnInit() {
+/*     this.server.getServerData().subscribe(data=>{
+      console.log(data);
+      this.serverData = data;
+    }) */
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
       this.selectedIndex = this.appPages.findIndex(

@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <h2>{{serverData.HostName}}</h2>
+      </ion-item>
+      <ion-item>
+      <p>Mapa: {{serverData.Map}}</p>
+      </ion-item>
+      <ion-item>
+      <p>Gamemode: {{serverData.ModDesc}}</p>
+      </ion-item>
+      <ion-item>
+      <p>Players: {{serverData.Players}}</p>
+      <button ion-button clear item-end>Ver</button>
+      </ion-item>
+      <ion-item>
+      <p>Chat</p>
+      <button ion-button clear item-end>Ir</button>
+      </ion-item>
+      <ion-item>
+      <p>Rcon</p>
+      <button ion-button clear item-end>Ir</button>
+      </ion-item>
+  </ion-list>
+</ion-content>

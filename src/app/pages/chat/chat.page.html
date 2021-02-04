@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Chat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+    <ion-content>
+      <ion-card>
+        <ion-card-header style="text-align: center;">
+          <!-- <ion-card-subtitle>View user chat</ion-card-subtitle> -->
+          <ion-button (click)="loadMore(5)" size="small" shape="round" color="secondary">Ver mais</ion-button>
+          <ion-card-title>Server Chat</ion-card-title>
+          <br>
+          <ion-list style="text-align: left;" *ngFor="let chat of chatData">
+            <ion-chip outline color="primary">
+              <ion-label>{{chat}}</ion-label>
+            </ion-chip>
+<!--             <ion-item>
+              <h3><small style="font-size: 10px">{{chat}}</small></h3>
+          </ion-item> -->
+        </ion-list>
+<!--         <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+        </ion-card-header>
+      
+        <ion-card-content style="text-align: center;">
+          <ion-item>
+            <ion-label position="floating">Mensagem...</ion-label>
+            <ion-input [(ngModel)]="Menssagem"></ion-input>
+          </ion-item>
+          <br>
+          <ion-button (click)="sendChat(Menssagem)" shape="round" color="success">Enviar</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+
+<!--     <ion-content>
+      <ion-button (click)="toggleInfiniteScroll()" expand="block">
+        Toggle Infinite Scroll
+      </ion-button>
+    
+      <ion-list></ion-list>
+    </ion-content> -->
