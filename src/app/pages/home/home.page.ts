@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { PlayersPage } from 'src/app/modal/players/players.page';
 import { ServerService } from 'src/app/services/server.service';
 
 @Component({
@@ -8,14 +10,30 @@ import { ServerService } from 'src/app/services/server.service';
 })
 export class HomePage implements OnInit {
   public serverData : Array<any> = [];
-
-  constructor(public server: ServerService) { }
+  public playersData;
+  constructor(public server: ServerService, public modalCtrl : ModalController) { }
 
   ngOnInit() {
     this.server.getServerData().subscribe(data=>{
-      //console.log(data);
+      console.log(data);
       this.serverData = data;
+      this.server.getServerPlayers().subscribe(data=>{
+        console.log(data);
+        this.playersData = data;
+      })
     })
   }
+
+    async presentModal() {
+      const modal = await this.modalCtrl.create({
+        component: PlayersPage,
+        cssClass: 'my-custom-class',
+        componentProps: {
+          'jogadores': this.playersData
+        }
+      });
+      return await modal.present();
+      
+    }
 
 }

@@ -1,0 +1,21 @@
+<ion-header>
+
+      <ion-title>ModalPage</ion-title>
+      <ion-buttons end>
+      <button ion-button (click)="closeModal()">Close</button>
+      </ion-buttons>
+      <ion-list style="text-align: center;" *ngFor="let player of playersData">
+        <ion-chip outline color="primary">
+          <ion-label (click)="presentPopover(player.Name)">{{player.Name}}</ion-label>
+        </ion-chip>
+<!--             <ion-item>
+          <h3><small style="font-size: 10px">{{chat}}</small></h3>
+      </ion-item> -->
+    </ion-list>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+  </ion-content>
