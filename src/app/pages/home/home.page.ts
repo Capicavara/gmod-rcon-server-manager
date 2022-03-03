@@ -14,6 +14,10 @@ export class HomePage implements OnInit {
   constructor(public server: ServerService, public modalCtrl : ModalController) { }
 
   ngOnInit() {
+    this.loadServerData();
+  }
+
+  loadServerData(){
     this.server.getServerData().subscribe(data=>{
       console.log(data);
       this.serverData = data;
@@ -23,6 +27,16 @@ export class HomePage implements OnInit {
       })
     })
   }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    this.loadServerData();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 1000);
+  }
+
 
     async presentModal() {
       const modal = await this.modalCtrl.create({
